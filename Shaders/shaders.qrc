@@ -1,0 +1,46 @@
+<RCC>
+    <qresource prefix="/Shaders">
+        <file>displayGrayVideo.frag</file>
+        <file>displayGrayVideo.vert</file>
+        <file>processGrayVideo.frag</file>
+        <file>processGrayVideo.vert</file>
+        <file>addTextureToFBO.frag</file>
+        <file>addTextureToFBO.vert</file>
+        <file>gaussianSmoother.frag</file>
+        <file>gaussianSmoother.vert</file>
+        <file>generateXYZG.frag</file>
+        <file>generateXYZG.vert</file>
+        <file>bilateralSmoother.frag</file>
+        <file>bilateralSmoother.vert</file>
+        <file>surfaceNormals.frag</file>
+        <file>surfaceNormals.vert</file>
+        <file>buildMeshMap.vert</file>
+        <file>buildMeshMap.frag</file>
+        <file>generateMagnitudePhase.vert</file>
+        <file>generateMagnitudePhase.frag</file>
+        <file>processBGGRVideo.vert</file>
+        <file>processBGGRVideo.frag</file>
+        <file>filterDrawFace.vert</file>
+        <file>filterDrawFace.frag</file>
+        <file>displayRGBAVideo.frag</file>
+        <file>displayRGBAVideo.vert</file>
+        <file>convertRGB2Gray.frag</file>
+        <file>convertRGB2Gray.vert</file>
+        <file>processRGGBVideo.frag</file>
+        <file>processRGGBVideo.vert</file>
+        <file>displayPhaseVideo.frag</file>
+        <file>displayPhaseVideo.vert</file>
+        <file>generateProjectorToCameraMapping.vert</file>
+        <file>generateProjectorToCameraMapping.frag</file>
+        <file>displayRGBAVideoWithMapping.frag</file>
+        <file>displayRGBAVideoWithMapping.vert</file>
+        <file>rawRealSenseVideoToXYZRGBLookUpTable.vert</file>
+        <file>rawRealSenseVideoToXYZRGBLookUpTable.frag</file>
+        <file>mergeRealSenseDepthWithGrayVideo.vert</file>
+        <file>mergeRealSenseDepthWithGrayVideo.frag</file>
+        <file>displayPointCloud.frag</file>
+        <file>displayPointCloud.vert</file>
+        <file>rawRealSenseVideoToXYZRGBNoTable.frag</file>
+        <file>rawRealSenseVideoToXYZRGBNoTable.vert</file>
+    </qresource>
+</RCC>
