@@ -1,0 +1,44 @@
+<RCC>
+    <qresource prefix="/Images">
+        <file>BackgroundTexture.tif</file>
+        <file>CenterSwope.tif</file>
+        <file>ColorBars.png</file>
+        <file>Decimal0.tif</file>
+        <file>Decimal1.tif</file>
+        <file>Decimal2.tif</file>
+        <file>Decimal3.tif</file>
+        <file>Decimal4.tif</file>
+        <file>Decimal5.tif</file>
+        <file>Decimal6.tif</file>
+        <file>Decimal7.tif</file>
+        <file>Decimal8.tif</file>
+        <file>Decimal9.tif</file>
+        <file>DecimalColon.tif</file>
+        <file>DownLeftArrow.tif</file>
+        <file>DownLeftLeftArrow.tif</file>
+        <file>DownPauseArrow.tif</file>
+        <file>DownPlayArrow.tif</file>
+        <file>DownProgressBarCenter.tif</file>
+        <file>DownRightArrow.tif</file>
+        <file>DownRightRightArrow.tif</file>
+        <file>DownVideoRecordArrow.tif</file>
+        <file>DownVideoStopArrow.tif</file>
+        <file>LauIcon.icns</file>
+        <file>LeftArrow.tif</file>
+        <file>LeftLeftArrow.tif</file>
+        <file>LeftSwope.tif</file>
+        <file>PauseArrow.tif</file>
+        <file>PlayArrow.tif</file>
+        <file>ProgressBarCenter.tif</file>
+        <file>ProgressBarLeft.tif</file>
+        <file>ProgressBarRight.tif</file>
+        <file>RightArrow.tif</file>
+        <file>RightRightArrow.tif</file>
+        <file>RightSwope.tif</file>
+        <file>VideoRecordArrow.tif</file>
+        <file>VideoStopArrow.tif</file>
+        <file>NoVideoScreen.jpg</file>
+        <file>monroe.jpg</file>
+        <file>MovieIT.jpg</file>
+    </qresource>
+</RCC>

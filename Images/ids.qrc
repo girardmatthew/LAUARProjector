@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/Files">
+        <file>ueye.ini</file>
+    </qresource>
+</RCC>
