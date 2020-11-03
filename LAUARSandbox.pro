@@ -146,13 +146,14 @@ win32 {
     kinect {
         DEFINES     += AZUREKINECT
         #Point to path for Azure Kinect General SDK
-        INCLUDEPATH += $$quote(C:/Program Files/Azure Kinect SDK v1.4.1/sdk/include)
-        DEPENDPATH  += $$quote(C:/Program Files/Azure Kinect SDK v1.4.1/sdk/include)
-        LIBS        += -L$$quote(C:/Program Files/Azure Kinect SDK v1.4.1/sdk/windows-desktop/amd64/release/lib) -lk4a
+        INCLUDEPATH += $$quote(C:/Program Files/Azure Kinect SDK v1.3.0/sdk/include)
+        DEPENDPATH  += $$quote(C:/Program Files/Azure Kinect SDK v1.3.0/sdk/include)
+        LIBS        += -L$$quote(C:/Program Files/Azure Kinect SDK v1.3.0/sdk/windows-desktop/amd64/release/lib) -lk4a
         #Point to path for Azure Kinect Body Tracking SDK
         INCLUDEPATH += $$quote(C:/Program Files/Azure Kinect Body Tracking SDK/sdk/include)
         DEPENDPATH  += $$quote(C:/Program Files/Azure Kinect Body Tracking SDK/sdk/include)
         LIBS        += -L$$quote(C:/Program Files/Azure Kinect Body Tracking SDK/sdk/windows-desktop/amd64/release/lib) -lk4abt
+        LIBS        += -L$$quote(C:/Program Files/Azure Kinect Body Tracking SDK/sdk/windows-desktop/amd64/release/bin)
     }
 
     visage {
