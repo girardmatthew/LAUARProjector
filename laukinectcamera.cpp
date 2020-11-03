@@ -215,14 +215,19 @@ void LAUKinectCamera::updateBuffer()
             // Pop Result from Body Tracker
             k4a_wait_result_t pop_frame_result = k4abt_tracker_pop_result(tracker, &body_frame, 0);
             if (pop_frame_result == K4A_WAIT_RESULT_SUCCEEDED)
-               {
+             {
                 /************* Successfully get a body tracking result, process the result here ***************/
                 //VisualizeResult
                 //Release the bodyFrame
                 size_t num_bodies = k4abt_frame_get_num_bodies(body_frame);
-                qDebug() << "bodies are detected: " << num_bodies;
-                k4abt_frame_release(body_frame);
-                }
+                if (num_bodies >  0){
+                    qDebug() << "bodies are detected: " << num_bodies;
+                    k4abt_frame_release(body_frame);
+                    }
+                else{
+                    qDebug() << "No bodies detected!";
+                    }
+               }
             else if (pop_frame_result == K4A_WAIT_RESULT_TIMEOUT)
                {
                     //  It should never hit timeout when K4A_WAIT_INFINITE is set.
@@ -230,6 +235,7 @@ void LAUKinectCamera::updateBuffer()
                 }
             else if (pop_frame_result == K4A_WAIT_RESULT_FAILED)
                 {
+
                     qDebug() << "Pop body frame result failed!\n";
                 }
 
