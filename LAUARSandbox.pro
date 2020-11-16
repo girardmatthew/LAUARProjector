@@ -11,6 +11,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 HEADERS += lauvideorecordingwidget.h \
            BodyTrackingHelpers.h \
+           Utilities.h \
            laufacedetectorglfilter.h \
            laufacialfeaturetemplatewidget.h \
            lauprojectorglwidget.h \

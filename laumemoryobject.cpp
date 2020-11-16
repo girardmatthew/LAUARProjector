@@ -29,7 +29,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                  *
  *                                                                               *
  *********************************************************************************/
-
 #include "laumemoryobject.h"
 
 #ifdef Q_PROCESSOR_ARM

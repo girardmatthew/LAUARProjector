@@ -29,7 +29,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                  *
  *                                                                               *
  *********************************************************************************/
-
 #include "laulookuptable.h"
 #include <locale.h>
 #include <math.h>

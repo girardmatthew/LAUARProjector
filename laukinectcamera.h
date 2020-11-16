@@ -31,6 +31,8 @@
 #include "k4a/k4a.h"
 #include "k4abt.h"
 #include "BodyTrackingHelpers.h"
+#include "Utilities.h"
+#include <iostream>
 #else
 #include "Kinect.h"
 #endif
@@ -59,7 +61,7 @@ public:
 
 protected:
     void updateBuffer();
-
+    void visualizeResults(size_t num_bodies, k4abt_frame_t body_frame);
 public slots:
 
 private:

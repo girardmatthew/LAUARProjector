@@ -55,6 +55,7 @@ LAUKinectCamera::LAUKinectCamera(QObject *parent) : LAUAbstractCamera(parent), p
                 k4abt_tracker_configuration_t tracker_config = K4ABT_TRACKER_CONFIG_DEFAULT;
                 tracker_config.processing_mode = K4ABT_TRACKER_PROCESSING_MODE_GPU; //Use K4ABT_TRACKER_PROCESSING_MODE_CPU for cpu only
                 hr = k4abt_tracker_create(&sensor_calibration, tracker_config, &tracker);
+
                 if (hr != K4A_RESULT_SUCCEEDED) {
                     errorString = QString("Body tracker initialization failed!");
                 }
@@ -81,6 +82,7 @@ LAUKinectCamera::~LAUKinectCamera()
     // CLOSE THE KINECT SENSOR AND SAFELY RELEASE ITS HANDLE
     if (ptrKinectSensor) {
         if (isConnected) {
+
             //Destroy Body Tracker
             k4abt_tracker_shutdown(tracker);
             k4abt_tracker_destroy(tracker);
@@ -221,7 +223,7 @@ void LAUKinectCamera::updateBuffer()
                 //Release the bodyFrame
                 size_t num_bodies = k4abt_frame_get_num_bodies(body_frame);
                 if (num_bodies >  0){
-                    qDebug() << "bodies are detected: " << num_bodies;
+                    visualizeResults(num_bodies, body_frame);
                     k4abt_frame_release(body_frame);
                     }
                 else{
@@ -246,3 +248,62 @@ void LAUKinectCamera::updateBuffer()
         }
     }
 }
+
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
+void LAUKinectCamera::visualizeResults(size_t numBodies, k4abt_frame_t bodyFrame)
+{
+    // Obtain original capture that generates the body tracking result
+    k4a_capture_t originalCapture = k4abt_frame_get_capture(bodyFrame);
+    k4a_image_t depthImage = k4a_capture_get_depth_image(originalCapture);
+
+    qDebug() << "\nbodies are detected: " << numBodies;
+
+    for (uint32_t i = 0; i < numBodies; i++)
+        {
+            k4abt_body_t body;
+            VERIFY(k4abt_frame_get_body_skeleton(bodyFrame, i, &body.skeleton), "Get skeleton from body frame failed!");
+
+            printf("Body ID: %u\n", body.id);
+            for (int i = 0; i < (int)K4ABT_JOINT_COUNT; i++)
+            {
+                k4a_float3_t position = body.skeleton.joints[i].position;
+                k4a_quaternion_t orientation = body.skeleton.joints[i].orientation;
+                k4abt_joint_confidence_level_t confidence_level = body.skeleton.joints[i].confidence_level;
+                printf("Joint[%d]: Position[mm] ( %f, %f, %f ); Orientation ( %f, %f, %f, %f); Confidence Level (%d) \n",
+                    i, position.v[0], position.v[1], position.v[2], orientation.v[0], orientation.v[1], orientation.v[2], orientation.v[3], confidence_level);
+            }
+
+            // Visualize bones
+            for (size_t boneIdx = 0; boneIdx < g_boneList.size(); boneIdx++)
+            {
+                k4abt_joint_id_t joint1 = g_boneList[boneIdx].first;
+                k4abt_joint_id_t joint2 = g_boneList[boneIdx].second;
+
+                if (body.skeleton.joints[joint1].confidence_level >= K4ABT_JOINT_CONFIDENCE_LOW &&
+                    body.skeleton.joints[joint2].confidence_level >= K4ABT_JOINT_CONFIDENCE_LOW)
+                {
+                    const k4a_float3_t& joint1Position = body.skeleton.joints[joint1].position;
+                    const k4a_float3_t& joint2Position = body.skeleton.joints[joint2].position;
+
+                    std::string joint_name_start = g_jointNames.find(g_boneList[boneIdx].first)->second;
+                    std::cout << "\nJoint Start: " << joint_name_start;
+
+                    std::string joint_name_end = g_jointNames.find(g_boneList[boneIdx].second)->second;
+                    std::cout << "\nJoint End: " << joint_name_end;
+
+                    float vector0 = joint2Position.v[0]-joint1Position.v[0];
+                    float vector1 = joint2Position.v[1]-joint1Position.v[1];
+                    float vector2 = joint2Position.v[2]-joint1Position.v[2];
+                    printf("\nBone %d Vector [mm] ( %f, %f, %f )\n", (int)boneIdx, vector0, vector1, vector2);
+                }
+            }
+        }
+
+    k4a_capture_release(originalCapture);
+    k4a_image_release(depthImage);
+}
+
+
+

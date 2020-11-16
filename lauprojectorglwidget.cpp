@@ -29,7 +29,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                  *
  *                                                                               *
  *********************************************************************************/
-
 #include "lauprojectorglwidget.h"
 #include <locale.h>
 #include <math.h>
